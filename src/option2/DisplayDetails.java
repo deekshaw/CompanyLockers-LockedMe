@@ -1,18 +1,18 @@
 package option2;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import lockerme.LockerMeMenu;
-import option1.AddFile;
-import option1.DeleteFile;
 
+//Class contains menu to perform add, delete, search operations and function calls to the respective operations
 public class DisplayDetails {
-	Scanner sc = new Scanner(System.in); 
+	Scanner sc = new Scanner(System.in);	
 	
 	int choice;
-	
-	public void dispplayDets() {
-		//Sub menu - Option 1 
+		
+	public void displayDets() {
+		//Sub menu - Option 2
 		do {			
 			System.out.println("\n1. Add file to the existing directory");
 			System.out.println("2. Delete a file from the list");
@@ -20,8 +20,15 @@ public class DisplayDetails {
 			System.out.println("4. Go to main Menu");
 			
 			//Accepting User input
-			System.out.print("Enter Choice : ");
-			choice = sc.nextInt();
+			try{	
+				System.out.print("Enter Choice : ");
+				choice = sc.nextInt();
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Invalid Option. Please enter valid option.");
+				DisplayDetails d = new DisplayDetails();
+				d.displayDets();
+			}
 			
 			//Performing User Functions
 			switch(choice) {
@@ -34,7 +41,8 @@ public class DisplayDetails {
 					d.deletingFile();
 					break;
 				case 3:
-					System.out.println("Search");
+					SearchFile s = new SearchFile();
+					s.searchingFile();
 					break;
 				case 4:
 					LockerMeMenu l = new LockerMeMenu();
@@ -48,4 +56,5 @@ public class DisplayDetails {
 		}
 		while(choice!=4);		
 	}
+	
 }

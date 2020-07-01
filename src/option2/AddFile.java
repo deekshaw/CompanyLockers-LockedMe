@@ -1,14 +1,16 @@
-package option1;
+package option2;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+//Adding File to the directory
 public class AddFile {
 	Scanner sc = new Scanner(System.in);
 	
 	String fileName;
 	
+	//Function accepts name of the file to be added from the user and calls the function that will add the file
 	public void addingFile() {
 		//Accepting name of the file from the user 
 		System.out.print("Enter file name : ");
@@ -19,14 +21,14 @@ public class AddFile {
 		a.createFile(fileName);
 	}
 	
-	//Adding the file in the directory 
+	//Adding file to the directory 
 	public void createFile(String fileName) {
 		File dir = new File ("C:\\Users\\Deeksha\\eclipse-workspace\\CompanyLockers\\CompanyLockersFile");
 	    try {
 	      File file = new File(dir, fileName);
 	      
-	      if (file.createNewFile()) {
-	    	 System.out.println("File Created : " + file.getName());
+	      if (file.createNewFile()) {    	      	 
+	    	  System.out.println("File Created : " + file.getName());
 	      } else {
 	    	  System.out.println("File already exists. Please enter another name");
 	    	  AddFile a = new AddFile();
